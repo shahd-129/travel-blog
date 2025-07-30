@@ -1,8 +1,7 @@
-import { Box, Button , Drawer } from '@mui/material'
-import React from 'react'
+import { Box, Button, Drawer, List, ListItem, ListItemText } from '@mui/material'
+import { Link } from "react-router-dom";
+export default function CustomDrawer({ setDrawerOpen, drawerOpen, pages }) {
 
-export default function CustomDrawer({ setDrawerOpen, drawerOpen , pages  }) {
- 
 
     const handleCloseDrawer = () => {
         setDrawerOpen(false);
@@ -29,26 +28,21 @@ export default function CustomDrawer({ setDrawerOpen, drawerOpen , pages  }) {
                 },
             }}
         >
-            {pages.map((page) => (
-                <Button
-                    key={page.id}
-                    
-                    sx={{
-                        fontSize: '15px',
-                        fontWeight:500,
-                        color: "black",
-                        textTransform: "none",
-                        padding: '1rem',
-                        width: "100%",
-                        display: "flex",
-                        justifyContent: "flex-start"
 
-                    }}
-                >
-                    {page.label}
-                </Button>
-            ))}
-          
+            <List>
+                {pages.map((page) => (
+                    <ListItem
+                        key={page.id}
+                        component={Link}
+                        to={page.path}
+                        onClick={() => setDrawerOpen(false)}
+                    >
+                        <ListItemText primary={page.label} />
+                    </ListItem>
+                ))}
+            </List>
+
+
         </Drawer>
 
     </>
