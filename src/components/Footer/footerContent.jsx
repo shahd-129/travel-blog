@@ -8,7 +8,7 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 import { photoFooter } from '../../assets'
 export default function FooterContent({ isMobile }) {
     return (
-        <Box bgcolor={'#696969'} px={{ xs: 2, sm: 5 }} py={6} >
+        <Box bgcolor={'#F2F2F2'} px={{ xs: 2, sm: 5 }} py={6} >
             <Container>
                 <Grid container alignItems="center" justifyContent="center" spacing={10}>
                     <Grid item xs={12} md={4} >
@@ -19,7 +19,7 @@ export default function FooterContent({ isMobile }) {
                             height="auto"
                             mr={2}
                         />
-                        <Box color={'white'} maxWidth="400px">
+                        <Box color={'primary.main'} maxWidth="400px">
                             <Typography fontWeight="bold" mb={1}>
                                 About Me
                             </Typography>
@@ -30,9 +30,9 @@ export default function FooterContent({ isMobile }) {
                     </Grid>
 
                     <Grid item xs={12} md={4} >
-                        <Typography color='white' fontWeight="bold">Join My Mailing List</Typography>
+                        <Typography color='primary.main' fontWeight="bold">Join My Mailing List</Typography>
                         <Box display='flex' flexDirection='column' alignItems={isMobile ? 'center' : 'flex-start'} mt={2}>
-                            <Typography variant="caption" color='white'>Email</Typography>
+                            <Typography variant="caption" color='primary.main'>Email</Typography>
                             <TextField
                                 placeholder='Enter your email here'
                                 size='small'
@@ -44,7 +44,7 @@ export default function FooterContent({ isMobile }) {
                             />
                             <Button
                                 sx={{
-                                    bgcolor: '#2573DA',
+                                    bgcolor: 'primary.main',
                                     color: 'white',
                                     textTransform: 'none',
                                     width: 300,
@@ -62,7 +62,7 @@ export default function FooterContent({ isMobile }) {
 
                             alignItems="center"
                             gap={1.5}
-                            color="white"
+                            color="primary.main"
                             fontSize='12px'
                         >
                             <FacebookOutlinedIcon fontSize="small" />

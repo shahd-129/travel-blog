@@ -1,10 +1,7 @@
 import { AppBar, Box, Container, IconButton, TextField, Toolbar, Typography } from "@mui/material";
-import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
-import InstagramIcon from "@mui/icons-material/Instagram";
-import PinterestIcon from "@mui/icons-material/Pinterest";
-import TwitterIcon from "@mui/icons-material/Twitter";
+
 import MenuIcon from "@mui/icons-material/Menu";
-import  { useState } from "react";
+import { useState } from "react";
 import CustomDrawer from "./customDrower";
 import { IconLogin } from "../../assets";
 import { Link } from "react-router-dom";
@@ -80,19 +77,15 @@ export default function Navbar() {
                 </Link>
               ))}
             </Box>
-            <Box sx={{ display: "flex", alignItems: "center", gap: 1.5, color: "#696969" }}>
-              <FacebookOutlinedIcon fontSize="small" />
-              <InstagramIcon fontSize="small" />
-              <PinterestIcon fontSize="small" />
-              <TwitterIcon fontSize="small" />
-            </Box>
+           
             <Link to="/auth/signup">
               <Box
                 component="img"
                 src={IconLogin}
-                width="30px"
-                height="30px"
+
                 sx={{
+                  width: { md: "30px", sm: "27px" , xs:"27px" },
+                  height: { md: "30px", sm: "27px" , xs:"27px" },
                   background: "#787878",
                   borderRadius: "50%",
                   padding: "5px",

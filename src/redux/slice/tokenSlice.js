@@ -18,9 +18,12 @@ import { createSlice } from "@reduxjs/toolkit";
        state.token = null;
        localStorage.removeItem('token');
      },
-   
+     setUserId : (state , action) =>{
+      state.user = action.payload;
+       localStorage.setItem('userId', action.payload);
+     }
    },
  });
 
- export const { setToken,clearToken } = tokenSlice.actions;
+ export const { setToken,clearToken , setUserId } = tokenSlice.actions;
  export default tokenSlice.reducer;

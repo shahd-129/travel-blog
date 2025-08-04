@@ -1,7 +1,6 @@
 import { Box, Button, FormControl, InputLabel, MenuItem, Select, Stack, TextField } from '@mui/material'
 import Editor from './editor'
-// import Editor from './editor'
-
+import PhotoCamera from '@mui/icons-material/PhotoCamera'
 export default function PostMangement({ value, onChange, handleSendData }) {
 
     return (<>
@@ -46,29 +45,43 @@ export default function PostMangement({ value, onChange, handleSendData }) {
                     }}
                 />
 
-
-                {/* <TextField
-                    placeholder='Image'
-                    fullWidth
-                    size='small'
-                    value={value?.image}
-                    onChange={onChange}
-                    name='image'
-
-                    sx={{
-                        '& .MuiOutlinedInput-root': {
-                            borderRadius: '10px',
-                            height: "50px",
-                            mt: 0.5,
-                            '&.Mui-focused fieldset': {
+                <Box>
+                    <input
+                        accept="image/*"
+                        style={{ display: 'none' }}
+                        id="upload-image"
+                        type="file"
+                        name="image"
+                        onChange={onChange}
+                    />
+                    <label htmlFor="upload-image">
+                        <Button
+                            variant="outlined"
+                            component="span"
+                            startIcon={<PhotoCamera />}
+                            sx={{
+                                textTransform: 'none',
+                                borderRadius: '10px',
+                                height: '50px',
+                                width: '100%',
+                                justifyContent: 'flex-start',
+                                color: 'black',
                                 borderColor: 'black',
-                            }
-                        },
-                    }}
-                /> */}
-
-                <input type="file" name="image" onChange={onChange} />
-
+                                '&:hover': {
+                                    borderColor: 'black',
+                                    backgroundColor: '#f2f2f2',
+                                }
+                            }}
+                        >
+                            Upload Image
+                        </Button>
+                    </label>
+                    {value?.image && (
+                        <Typography mt={1} variant="body2" color="text.secondary">
+                            Selected: {value.image.name}
+                        </Typography>
+                    )}
+                </Box>
                 <FormControl
                     size="small"
                     sx={{

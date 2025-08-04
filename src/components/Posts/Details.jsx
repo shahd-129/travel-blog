@@ -8,10 +8,9 @@ import { useGetPostByIdQuery, useLikePostMutation } from '../../redux/api/posts'
 import { useParams } from 'react-router-dom';
 import { useCreateCommentMutation, useDeleteCommentMutation } from '../../redux/api/comment';
 import { useState } from 'react';
-import ModalAuth from './ModalAuth';
 import { useSelector } from 'react-redux';
-import ModalSignup from './ModalSignup';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import ModalAuth from './ModalAuth';
 export default function Details() {
   const { id } = useParams();
   // console.log(id);
@@ -40,10 +39,10 @@ export default function Details() {
     setOpenComment(openComment === postId ? null : postId);
     setComment({ body: '' });
   }
-  const [authType, setAuthType] = useState(null);
+  const [authType, setAuthType] = useState(false);
   async function handleCommentSubmit(id) {
     if (!token) {
-      setAuthType("signup");
+      setAuthType(true);
       return;
     }
     try {
@@ -198,8 +197,7 @@ export default function Details() {
               sx={{
                 mt: 1,
                 borderRadius: 2,
-                backgroundColor: '#0095f6',
-                '&:hover': { backgroundColor: '#0077cc' },
+                backgroundColor: 'primary.main',
               }}
               onClick={() => handleCommentSubmit(posts?.body?.id)}
               disabled={!comment.body.trim()}
@@ -260,12 +258,10 @@ export default function Details() {
         message={snackbarMessage}
         anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
       />
-      {authType === "login" && (
-        <ModalAuth open={true} onClose={() => setAuthType(null)} />
-      )}
-      {authType === "signup" && (
-        <ModalSignup open={true} onClose={() => setAuthType(null)} />
-      )}
+    
+      
+        <ModalAuth open={authType} onClose={() => setAuthType(true)} />
+      
 
     </>
   );

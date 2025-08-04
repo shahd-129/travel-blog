@@ -5,22 +5,23 @@ export const notificationsApi = baseApiSlice
   .injectEndpoints({
     endpoints: (builder) => ({
       getAllNotifications: builder.query({
-        query: ({ id }) => ({
-          url: `/notifications/${id}`,
+        query: ({ userId }) => ({
+          url: `/notifications/${userId}`,
           method: "GET",
         }),
         providesTags: ["NOTIFICATIONS"],
       }),
-      createNotifications: builder.mutation({
-        query: (body) => ({
-          url: "notifications",
-          method: "POST",
-          body,
+      markNotificationasSeen: builder.mutation({
+        query: ({ id }) => ({
+          url: `notifications/seen/${id}`,
+          method: "PUT",
         }),
         invalidatesTags: ["NOTIFICATIONS"],
       }),
     }),
   });
 
-export const { useCreateNotificationsMutation, useGetAllNotificationsQuery } =
-  notificationsApi;
+export const {
+  useGetAllNotificationsQuery,
+  useMarkNotificationasSeenMutation,
+} = notificationsApi;

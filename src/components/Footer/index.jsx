@@ -20,7 +20,7 @@ export default function Footer() {
     return (
         <>
 
-            <Box bgcolor={'#2573DA'} py={3} width={'100%'}>
+            <Box bgcolor={'primary.main'} py={3} width={'100%'}>
                 <Box
                     display="flex"
                     rowGap={10}

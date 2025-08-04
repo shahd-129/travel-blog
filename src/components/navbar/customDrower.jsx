@@ -1,5 +1,9 @@
 import { Box, Button, Drawer, List, ListItem, ListItemText } from '@mui/material'
 import { Link } from "react-router-dom";
+// import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
+// import InstagramIcon from "@mui/icons-material/Instagram";
+// import PinterestIcon from "@mui/icons-material/Pinterest";
+// import TwitterIcon from "@mui/icons-material/Twitter";
 export default function CustomDrawer({ setDrawerOpen, drawerOpen, pages }) {
 
 
@@ -41,7 +45,12 @@ export default function CustomDrawer({ setDrawerOpen, drawerOpen, pages }) {
                     </ListItem>
                 ))}
             </List>
-
+            {/* <Box sx={{ display: { md: "flex", xs: "none" }, alignItems: "center", gap: 1.5, color: "#696969" }}>
+                <FacebookOutlinedIcon fontSize="small" />
+                <InstagramIcon fontSize="small" />
+                <PinterestIcon fontSize="small" />
+                <TwitterIcon fontSize="small" />
+            </Box> */}
 
         </Drawer>
 

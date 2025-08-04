@@ -9,9 +9,9 @@ import {
     CssBaseline
 } from '@mui/material';
 import { useLoginMutation } from '../../redux/api/signup';
-import { Link, NavLink, useNavigate } from 'react-router-dom';
+import {  NavLink, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { setToken } from '../../redux/slice/tokenSlice';
+import { setToken , setUserId } from '../../redux/slice/tokenSlice';
 import LoginIcon from '@mui/icons-material/Login';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import Visibility from '@mui/icons-material/Visibility';
@@ -40,11 +40,13 @@ function Login() {
         try {
 
             const res = await login(formData).unwrap()
-            // console.log(res);
+            console.log(res);
 
             if (res.message === 'Success') {
                 const token = res?.body?.access_token;
                 distpach(setToken(token))
+                const userId = res?.body?.user?.id;
+                distpach(setUserId(userId))
                 if (res?.body?.user?.role === 'ADMIN') {
                     navigate("/dashboard");
                 } else {

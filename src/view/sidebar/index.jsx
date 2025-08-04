@@ -13,7 +13,7 @@ import ListItemText from '@mui/material/ListItemText';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import { Link, Outlet, useNavigate, useLocation } from 'react-router-dom';  
+import { Link, Outlet, useNavigate, useLocation } from 'react-router-dom';
 import GroupIcon from '@mui/icons-material/Group';
 import CreateIcon from '@mui/icons-material/Create';
 import { Button, styled } from '@mui/material';
@@ -43,7 +43,7 @@ function Sidebar(props) {
     };
 
     const navigate = useNavigate();
-    const location = useLocation(); 
+    const location = useLocation();
 
     function Logout() {
         navigate('/');
@@ -77,7 +77,7 @@ function Sidebar(props) {
         zIndex: theme.zIndex.appBar - 1,
     }));
 
-  
+
     const drawer = (
         <Box sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
             <Toolbar />
@@ -92,15 +92,16 @@ function Sidebar(props) {
                         <ListItemButton
                             component={Link}
                             to={path}
-                          
-                            selected={location.pathname.startsWith(path)}
+                            selected={
+                                path === '/dashboard'
+                                    ? location.pathname === '/dashboard'
+                                    : location.pathname.startsWith(path)
+                            }
                             sx={{
                                 '&.Mui-selected': {
                                     backgroundColor: '#6f92b4bf',
                                     color: '#fff',
-                                    // '& .MuiListItemIcon-root': { color: 'red' },
                                 },
-                               
                             }}
                         >
                             <ListItemIcon sx={{ minWidth: "30px", color: "black" }}>{icon}</ListItemIcon>
@@ -112,6 +113,7 @@ function Sidebar(props) {
                     </ListItem>
                 ))}
             </List>
+
 
             <Box sx={{ display: "flex" }}>
                 <Button onClick={Logout} sx={{ width: '100%', padding: '10px', borderRadius: '8px', color: 'black', textTransform: "none" }}>
@@ -152,7 +154,7 @@ function Sidebar(props) {
                 </Toolbar>
             </AppBar>
 
-         
+
             <Box
                 component="nav"
                 sx={{
@@ -161,7 +163,7 @@ function Sidebar(props) {
                 }}
                 aria-label="mailbox folders"
             >
-            
+
                 <Drawer
                     container={container}
                     variant="temporary"
@@ -193,7 +195,7 @@ function Sidebar(props) {
                 </Drawer>
             </Box>
 
-       
+
             <Main sx={{ bgcolor: "#F5F4F7", minHeight: "100vh" }} open={open}>
                 <DrawerHeader sx={{ bgcolor: "#F5F4F7" }} />
                 <Outlet />

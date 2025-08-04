@@ -1,6 +1,6 @@
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
-import Login from '../../auth/Login';
+import SignUp from '../../auth/signUp';
 
 export default function ModalAuth({ open, onClose }) {
 
@@ -14,7 +14,7 @@ export default function ModalAuth({ open, onClose }) {
         aria-describedby="modal-modal-description"
       >
       
-        <Login />
+        <SignUp />
       </Modal>
     </Box>
   );
